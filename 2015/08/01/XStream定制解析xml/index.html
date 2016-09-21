@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, Yealove, yealove" />
+  <meta name="keywords" content="Java,Xml,XStream," />
 
 
 
@@ -84,12 +84,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="10号砖厂">
-<meta property="og:url" content="http://yealove.github.io/index.html">
+<meta name="description" content="最近项目中用到XStream解析报文，需要解析报文格式为：12345678910&amp;lt;root&amp;gt;  &amp;lt;headParam1&amp;gt;param1&amp;lt;/headParam1&amp;gt;  &amp;lt;headParam2&amp;gt;param2&amp;lt;/headParam2&amp;gt;  &amp;lt;body&amp;gt;    &amp;lt;order&amp;gt;      &amp;lt;oid&amp;gt;1&amp;lt;/oid&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XStream定制解析xml">
+<meta property="og:url" content="http://yealove.github.io/2015/08/01/XStream定制解析xml/index.html">
 <meta property="og:site_name" content="10号砖厂">
+<meta property="og:description" content="最近项目中用到XStream解析报文，需要解析报文格式为：12345678910&amp;lt;root&amp;gt;  &amp;lt;headParam1&amp;gt;param1&amp;lt;/headParam1&amp;gt;  &amp;lt;headParam2&amp;gt;param2&amp;lt;/headParam2&amp;gt;  &amp;lt;body&amp;gt;    &amp;lt;order&amp;gt;      &amp;lt;oid&amp;gt;1&amp;lt;/oid&amp;">
+<meta property="og:updated_time" content="2016-09-21T16:41:18.873Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="10号砖厂">
+<meta name="twitter:title" content="XStream定制解析xml">
+<meta name="twitter:description" content="最近项目中用到XStream解析报文，需要解析报文格式为：12345678910&amp;lt;root&amp;gt;  &amp;lt;headParam1&amp;gt;param1&amp;lt;/headParam1&amp;gt;  &amp;lt;headParam2&amp;gt;param2&amp;lt;/headParam2&amp;gt;  &amp;lt;body&amp;gt;    &amp;lt;order&amp;gt;      &amp;lt;oid&amp;gt;1&amp;lt;/oid&amp;">
 
 
 
@@ -110,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://yealove.github.io/"/>
+  <link rel="canonical" href="http://yealove.github.io/2015/08/01/XStream定制解析xml/"/>
 
-  <title> 10号砖厂 </title>
+  <title> XStream定制解析xml | 10号砖厂 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -133,9 +137,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -212,9 +214,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -234,113 +236,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/09/20/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-20T19:50:54+08:00" content="2016-09-20">
-              2016-09-20
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/20/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/20/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://hexo.io/zh-cn/" target="_blank" rel="external">Hexo</a>搭建本地环境就是快，比<a href="http://jekyllcn.com/" target="_blank" rel="external">Jekyll</a>方便多了。</p>
-<p>貌似是Ruby对Windows的支持不好，反正我折腾了半天也没搭建好jekyll的本地环境（PS：主要是卡在依赖包版本的问题上了）。<br>而Hexo基于<a href="https://nodejs.org/zh-cn/" target="_blank" rel="external">Node.js</a>，搭建本地环境就非常方便、快捷，安装好Node.js后，用Hexo首页的几条命令就可以看的成果了。</p>
-<p>折腾一下<a href="https://hexo.io/themes/" target="_blank" rel="external">主题</a>，博客就大功告成了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/08/01/XStream定制解析xml/" itemprop="url">
-                  XStream定制解析xml
-                </a>
+                XStream定制解析xml
               
             
           </h1>
@@ -387,9 +283,7 @@
       
 
       
-        
-          
-            <p>最近项目中用到XStream解析报文，需要解析报文格式为：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">headParam1</span>&gt;</span>param1<span class="tag">&lt;/<span class="name">headParam1</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">headParam2</span>&gt;</span>param2<span class="tag">&lt;/<span class="name">headParam2</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">order</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">oid</span>&gt;</span>1<span class="tag">&lt;/<span class="name">oid</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">info</span>&gt;</span>测试1<span class="tag">&lt;/<span class="name">info</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">order</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></div></pre></td></tr></table></figure></p>
+        <p>最近项目中用到XStream解析报文，需要解析报文格式为：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">headParam1</span>&gt;</span>param1<span class="tag">&lt;/<span class="name">headParam1</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">headParam2</span>&gt;</span>param2<span class="tag">&lt;/<span class="name">headParam2</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">order</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">oid</span>&gt;</span>1<span class="tag">&lt;/<span class="name">oid</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">info</span>&gt;</span>测试1<span class="tag">&lt;/<span class="name">info</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">order</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>或<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">headParam1</span>&gt;</span>param1<span class="tag">&lt;/<span class="name">headParam1</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">headParam2</span>&gt;</span>param2<span class="tag">&lt;/<span class="name">headParam2</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">orderlist</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">order</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">oid</span>&gt;</span>1<span class="tag">&lt;/<span class="name">oid</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">info</span>&gt;</span>测试1<span class="tag">&lt;/<span class="name">info</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">order</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">order</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">oid</span>&gt;</span>2<span class="tag">&lt;/<span class="name">oid</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">info</span>&gt;</span>测试2<span class="tag">&lt;/<span class="name">info</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">order</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">orderlist</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>报文头节点都是确定了的，只是body节点下不确定是单值节点order还是多值节点orderlist，所以不能用注解写死body节点的内容。<br>通过google资料发现可以定制自己的转换器（Converter），于是就试着写了一个。<br>例子如下：<br>Root.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> com.thoughtworks.xstream.annotations.XStreamAlias;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 根节点，xml解析完后的完整对象</div><div class="line"> * Created by Yealove on 2015-07-27.</div><div class="line"> */</div><div class="line"><span class="meta">@XStreamAlias</span>(<span class="string">"root"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Root</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 头信息</div><div class="line">     */</div><div class="line">    <span class="meta">@XStreamAlias</span>(<span class="string">"headParam1"</span>)</div><div class="line">    <span class="keyword">private</span> String headParam1;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 头信息</div><div class="line">     */</div><div class="line">    <span class="meta">@XStreamAlias</span>(<span class="string">"headParam2"</span>)</div><div class="line">    <span class="keyword">private</span> String headParam2;</div><div class="line"></div><div class="line">    <span class="meta">@XStreamAlias</span>(<span class="string">"body"</span>)</div><div class="line">    <span class="keyword">private</span> Body body;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"Root&#123;"</span> +</div><div class="line">                <span class="string">"headParam1='"</span> + headParam1 + <span class="string">'\''</span> +</div><div class="line">                <span class="string">", headParam2='"</span> + headParam2 + <span class="string">'\''</span> +</div><div class="line">                <span class="string">", body="</span> + body +</div><div class="line">                <span class="string">'&#125;'</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getHeadParam1</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> headParam1;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHeadParam1</span><span class="params">(String headParam1)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.headParam1 = headParam1;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getHeadParam2</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> headParam2;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHeadParam2</span><span class="params">(String headParam2)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.headParam2 = headParam2;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Body <span class="title">getBody</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> body;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBody</span><span class="params">(Body body)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.body = body;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>Body.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> com.thoughtworks.xstream.annotations.XStreamAlias;</div><div class="line"><span class="keyword">import</span> com.thoughtworks.xstream.annotations.XStreamConverter;</div><div class="line"><span class="keyword">import</span> com.thoughtworks.xstream.annotations.XStreamOmitField;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * body节点</div><div class="line"> * Created by Yealove on 2015-07-27.</div><div class="line"> */</div><div class="line"><span class="meta">@XStreamAlias</span>(<span class="string">"body"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Body</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 生成xml时，body节点下子节点的名称</div><div class="line">     * 提供给转换器使用</div><div class="line">     */</div><div class="line">    <span class="meta">@XStreamOmitField</span></div><div class="line">    <span class="keyword">private</span> String nodeName;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 子节点</div><div class="line">     */</div><div class="line">    <span class="meta">@XStreamConverter</span>(BodyConverter.class)</div><div class="line">    <span class="keyword">private</span> Object subNode;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"Body&#123;"</span> +</div><div class="line">                <span class="string">"subNode="</span> + subNode +</div><div class="line">                <span class="string">'&#125;'</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getSubNode</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> subNode;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSubNode</span><span class="params">(Object subNode)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.subNode = subNode;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getNodeName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> nodeName;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNodeName</span><span class="params">(String nodeName)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.nodeName = nodeName;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -399,344 +293,67 @@
 <p><br></p>
 <p>在写转换器BodyConverter中unmarshal方法时，开始不知道怎么解析多个同级节点，最后查看XStream自带的转换器ArrayConverter的unmarshal方法才得以解决。<br>ArrayConverter的unmarshal方法如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">unmarshal</span><span class="params">(HierarchicalStreamReader reader, UnmarshallingContext context)</span> </span>&#123;</div><div class="line">        <span class="comment">// read the items from xml into a list</span></div><div class="line">        List items = <span class="keyword">new</span> ArrayList();</div><div class="line">        <span class="keyword">while</span> (reader.hasMoreChildren()) &#123;</div><div class="line">            reader.moveDown();</div><div class="line">            Object item = readItem(reader, context, <span class="keyword">null</span>); <span class="comment">// <span class="doctag">TODO:</span> arg, what should replace null?</span></div><div class="line">            items.add(item);</div><div class="line">            reader.moveUp();</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// now convertAnother the list into an array</span></div><div class="line">        <span class="comment">// (this has to be done as a separate list as the array size is not</span></div><div class="line">        <span class="comment">//  known until all items have been read)</span></div><div class="line">        Object array = Array.newInstance(context.getRequiredType().getComponentType(), items.size());</div><div class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (Iterator iterator = items.iterator(); iterator.hasNext();) &#123;</div><div class="line">            Array.set(array, i++, iterator.next());</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> array;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/06/23/java显示当前鼠标位置/" itemprop="url">
-                  java显示当前鼠标位置
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-06-23T00:18:00+08:00" content="2015-06-23">
-              2015-06-23
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/Java/" rel="tag">#Java</a>
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/06/23/java显示当前鼠标位置/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/23/java显示当前鼠标位置/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+            <a href="/tags/Xml/" rel="tag">#Xml</a>
           
-
-          
-
-          
-          
-
+            <a href="/tags/XStream/" rel="tag">#XStream</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> javax.swing.*;</div><div class="line"><span class="keyword">import</span> java.awt.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MousePosition</span> <span class="keyword">extends</span> <span class="title">JFrame</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        JFrame fm = <span class="keyword">new</span> JFrame(<span class="string">"鼠标坐标"</span>);</div><div class="line"></div><div class="line">        <span class="comment">//获取屏幕大小</span></div><div class="line">        Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();</div><div class="line">        <span class="keyword">int</span> width = (<span class="keyword">int</span>) screensize.getWidth();</div><div class="line">        <span class="comment">//int height = (int)screensize.getHeight();</span></div><div class="line"></div><div class="line">        fm.setLocation(width - <span class="number">250</span>, <span class="number">40</span>);</div><div class="line">        fm.setSize(<span class="number">200</span>, <span class="number">65</span>);</div><div class="line">        fm.setResizable(<span class="keyword">false</span>);</div><div class="line"></div><div class="line">        <span class="comment">// 去掉窗口的装饰</span></div><div class="line">        fm.setUndecorated(<span class="keyword">true</span>);</div><div class="line">        <span class="comment">//采用指定的窗口装饰风格</span></div><div class="line">        fm.getRootPane().setWindowDecorationStyle(JRootPane.INFORMATION_DIALOG);</div><div class="line"></div><div class="line">        fm.setVisible(<span class="keyword">true</span>);</div><div class="line">        fm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</div><div class="line"></div><div class="line">        JPanel panel = <span class="keyword">new</span> JPanel();</div><div class="line"></div><div class="line">        JLabel lab = <span class="keyword">new</span> JLabel();</div><div class="line">        panel.add(lab);</div><div class="line"></div><div class="line">        fm.add(panel);</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">            <span class="comment">//获取鼠标位置</span></div><div class="line">            Point point = MouseInfo.getPointerInfo().getLocation();</div><div class="line">            lab.setText(<span class="string">"x:"</span> + point.x + <span class="string">", y:"</span> + point.y);</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                Thread.sleep(<span class="number">500</span>);</div><div class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">                fm.setResizable(<span class="keyword">true</span>);</div><div class="line">                lab.setText(e.getMessage());</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2015/06/23/java显示当前鼠标位置/" rel="next" title="java显示当前鼠标位置">
+                <i class="fa fa-chevron-left"></i> java显示当前鼠标位置
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2014/10/19/jquery-validate基本用法/" itemprop="url">
-                  jquery-validate基本用法
-                </a>
-              
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-10-19T15:39:00+08:00" content="2014-10-19">
-              2014-10-19
-            </time>
-          </span>
-
-          
-
-          
+              <a href="/2016/09/20/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/10/19/jquery-validate基本用法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/10/19/jquery-validate基本用法/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h2 id="简单的demo"><a href="#简单的demo" class="headerlink" title="简单的demo"></a>简单的demo</h2><p>1.引入js文件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;script src=<span class="string">"jquery-1.10.2.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div><div class="line">&lt;script src=<span class="string">"jquery.validate.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
-<p>2.写一个简单的form<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">role</span>=<span class="string">"form"</span> <span class="attr">id</span>=<span class="string">"form1"</span> <span class="attr">class</span>=<span class="string">"form-horizontal form-inline"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group col-md-5"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"exampleInputName"</span> <span class="attr">class</span>=<span class="string">"input-group-addon"</span>&gt;</span>Name<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">required</span>=<span class="string">"true"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"exampleInputName"</span></span></div><div class="line">               <span class="attr">name</span>=<span class="string">"exampleInputName"</span></div><div class="line">               <span class="attr">placeholder</span>=<span class="string">"Enter Name"</span>&gt;</div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group col-md-5"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"exampleInputAge"</span> <span class="attr">class</span>=<span class="string">"input-group-addon"</span>&gt;</span>Age<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">number</span>=<span class="string">"true"</span> <span class="attr">required</span>=<span class="string">"true"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"exampleInputAge"</span></span></div><div class="line">               <span class="attr">name</span>=<span class="string">"exampleInputAge"</span></div><div class="line">               <span class="attr">placeholder</span>=<span class="string">"Age"</span>&gt;</div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group col-md-1"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-default"</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>3.添加此表单的验证<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">$().ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//---------form验证 start---------------------</span></div><div class="line">    $(form1).validate(&#123;</div><div class="line">        <span class="comment">//修改提示方式</span></div><div class="line">        showErrors: <span class="function"><span class="keyword">function</span> (<span class="params">errorMap, errorList</span>) </span>&#123;</div><div class="line">            layer.tips(errorList[<span class="number">0</span>].message</div><div class="line">                            , errorList[<span class="number">0</span>].element</div><div class="line">                            , &#123; style: [<span class="string">'background-color:#78BA32; color:#fff'</span>, <span class="string">'#78BA32'</span>]&#125;</div><div class="line">            );</div><div class="line">            <span class="comment">//下面是默认提示方式</span></div><div class="line">            <span class="comment">//this.defaultShowErrors();</span></div><div class="line">        &#125;</div><div class="line">        , onkeyup: <span class="literal">true</span></div><div class="line">        , submitHandler: <span class="function"><span class="keyword">function</span> (<span class="params">form</span>) </span>&#123;</div><div class="line">            <span class="comment">//如果没有通过验证是不会弹出submit的</span></div><div class="line">            alert(<span class="string">"submit"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    <span class="comment">//---------form验证 end---------------------</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<h2 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a>其它说明</h2><h3 id="中文提示"><a href="#中文提示" class="headerlink" title="中文提示"></a>中文提示</h3><p>将下面的js单独放到一个js中然后引入<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"messages_zh.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> * Translated default messages for the jQuery validation plugin.</div><div class="line"> * Locale: ZH (Chinese, 中文, 汉语, 漢語)</div><div class="line"> */</div><div class="line">jQuery.extend(jQuery.validator.messages, &#123;</div><div class="line">        required: <span class="string">"必填字段"</span>,</div><div class="line">		remote: <span class="string">"请修正该字段"</span>,</div><div class="line">		email: <span class="string">"请输入正确格式的电子邮件"</span>,</div><div class="line">		url: <span class="string">"请输入合法的网址"</span>,</div><div class="line">		date: <span class="string">"请输入合法的日期"</span>,</div><div class="line">		dateISO: <span class="string">"请输入合法的日期 (ISO)."</span>,</div><div class="line">		number: <span class="string">"请输入合法的数字"</span>,</div><div class="line">		digits: <span class="string">"只能输入整数"</span>,</div><div class="line">		creditcard: <span class="string">"请输入合法的信用卡号"</span>,</div><div class="line">		equalTo: <span class="string">"请再次输入相同的值"</span>,</div><div class="line">		accept: <span class="string">"请输入拥有合法后缀名的字符串"</span>,</div><div class="line">		maxlength: jQuery.validator.format(<span class="string">"请输入一个长度最多是 &#123;0&#125; 的字符串"</span>),</div><div class="line">		minlength: jQuery.validator.format(<span class="string">"请输入一个长度最少是 &#123;0&#125; 的字符串"</span>),</div><div class="line">		rangelength: jQuery.validator.format(<span class="string">"请输入一个长度介于 &#123;0&#125; 和 &#123;1&#125; 之间的字符串"</span>),</div><div class="line">		range: jQuery.validator.format(<span class="string">"请输入一个介于 &#123;0&#125; 和 &#123;1&#125; 之间的值"</span>),</div><div class="line">		max: jQuery.validator.format(<span class="string">"请输入一个最大为 &#123;0&#125; 的值"</span>),</div><div class="line">		min: jQuery.validator.format(<span class="string">"请输入一个最小为 &#123;0&#125; 的值"</span>)</div><div class="line">&#125;);</div><div class="line"></div><div class="line">jQuery.extend(jQuery.validator.defaults, &#123;</div><div class="line">    errorElement: <span class="string">"span"</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h3 id="自定义验证"><a href="#自定义验证" class="headerlink" title="自定义验证"></a>自定义验证</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//自定义检查规则</span></div><div class="line"><span class="comment">//notnull 自定义的验证规则名称，在input中表现为notnull="true"</span></div><div class="line"><span class="comment">//value为input中输入的值，element为input的Jquery对象，返回true：表示验证通过不提示</span></div><div class="line"><span class="comment">//"不能为空"：验证不通过时的提示信息</span></div><div class="line">$.validator.addMethod(<span class="string">"notnull"</span></div><div class="line">    , <span class="function"><span class="keyword">function</span> (<span class="params">value, element</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> value != <span class="string">""</span>;</div><div class="line">    &#125;</div><div class="line">    , <span class="string">"不能为空"</span></div><div class="line">);</div></pre></td></tr></table></figure>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>在用Jquery-validate进行验证时，如果表单项<strong>没有name属性</strong>，则Jquery-validate<strong>只验证第一个</strong>表单项。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/06/11/CSS3之边框发亮/" itemprop="url">
-                  CSS3之边框发亮
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-06-11T17:18:00+08:00" content="2014-06-11">
-              2014-06-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/06/11/CSS3之边框发亮/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/06/11/CSS3之边框发亮/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>前段时间自己鼓捣模板的时候，找到一些漂亮的实现方法。<br>看到一个边框发亮的非常漂亮的输入框，所以自己就拿来改造改造。下面的源码可以在任何元素中class中加入“light”就可以有边框发亮的效果（在暗色的背景下）。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.light</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">5px</span> <span class="number">5px</span> <span class="number">5px</span> <span class="number">5px</span>;</div><div class="line">    <span class="attribute">-webkit-animation</span>: glow <span class="number">1200ms</span> ease-out infinite alternate;</div><div class="line">    <span class="attribute">-moz-animation</span>: glow <span class="number">1200ms</span> ease-out infinite alternate;</div><div class="line">    <span class="attribute">-o-animation</span>: glow <span class="number">1200ms</span> ease-out infinite alternate;</div><div class="line">    <span class="attribute">-ms-animation</span>: glow <span class="number">1200ms</span> ease-out infinite alternate;</div><div class="line">    <span class="attribute">animation</span>: glow <span class="number">1200ms</span> ease-out infinite alternate;</div><div class="line"></div><div class="line">    <span class="attribute">border-color</span>: <span class="built_in">rgba</span>(220, 255, 220, .4);</div><div class="line">    <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="built_in">rgba</span>(220, 255, 220, .2), inset <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="built_in">rgba</span>(220, 255, 220, .1), <span class="number">0</span> <span class="number">2px</span> <span class="number">0</span> <span class="number">#000</span>;</div><div class="line">    <span class="attribute">outline</span>: none;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@-<span class="keyword">webkit</span>-<span class="keyword">keyframes</span> glow &#123;</div><div class="line">    0% &#123;</div><div class="line">        <span class="attribute">border-color</span>: <span class="built_in">rgba</span>(220, 255, 220, .4);</div><div class="line">        <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="built_in">rgba</span>(220, 255, 220, .2), inset <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="built_in">rgba</span>(220, 255, 220, .1)</div><div class="line">        , <span class="number">0</span> <span class="number">1px</span> <span class="number">0</span> <span class="built_in">rgba</span>(220, 255, 220, .36);</div><div class="line">    &#125;</div><div class="line">    100% &#123;</div><div class="line">        <span class="attribute">border-color</span>: <span class="built_in">rgba</span>(220, 255, 220, .8);</div><div class="line">        <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">20px</span> <span class="built_in">rgba</span>(220, 255, 220, .3), inset <span class="number">0</span> <span class="number">0</span> <span class="number">10px</span> <span class="built_in">rgba</span>(220, 255, 220, .34)</div><div class="line">        , <span class="number">0</span> <span class="number">1px</span> <span class="number">0</span> <span class="built_in">rgba</span>(220, 255, 220, .36);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@-<span class="keyword">moz</span>-<span class="keyword">keyframes</span> glow &#123;</div><div class="line">    0% &#123;</div><div class="line">        <span class="attribute">border-color</span>: <span class="built_in">rgba</span>(220, 255, 220, .4);</div><div class="line">        <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="built_in">rgba</span>(220, 255, 220, .2), inset <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="built_in">rgba</span>(220, 255, 220, .1)</div><div class="line">        , <span class="number">0</span> <span class="number">1px</span> <span class="number">0</span> <span class="built_in">rgba</span>(220, 255, 220, .36);</div><div class="line">    &#125;</div><div class="line">    100% &#123;</div><div class="line">        <span class="attribute">border-color</span>: <span class="built_in">rgba</span>(220, 255, 220, .8);</div><div class="line">        <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">20px</span> <span class="built_in">rgba</span>(220, 255, 220, .36), inset <span class="number">0</span> <span class="number">0</span> <span class="number">10px</span> <span class="built_in">rgba</span>(220, 255, 220, .34)</div><div class="line">        , <span class="number">0</span> <span class="number">1px</span> <span class="number">0</span> <span class="built_in">rgba</span>(220, 255, 220, .36);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@-<span class="keyword">o</span>-<span class="keyword">keyframes</span> glow &#123;</div><div class="line">    0% &#123;</div><div class="line">        <span class="attribute">border-color</span>: <span class="built_in">rgba</span>(220, 255, 220, .8);</div><div class="line">        <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="built_in">rgba</span>(220, 255, 220, .2), inset <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="built_in">rgba</span>(220, 255, 220, .1)</div><div class="line">        , <span class="number">0</span> <span class="number">1px</span> <span class="number">0</span> <span class="built_in">rgba</span>(220, 255, 220, .36);</div><div class="line">    &#125;</div><div class="line">    100% &#123;</div><div class="line">        <span class="attribute">border-color</span>: <span class="built_in">rgba</span>(220, 255, 220, .8);</div><div class="line">        <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">20px</span> <span class="built_in">rgba</span>(220, 255, 220, .36), inset <span class="number">0</span> <span class="number">0</span> <span class="number">10px</span> <span class="built_in">rgba</span>(220, 255, 220, .34)</div><div class="line">        , <span class="number">0</span> <span class="number">1px</span> <span class="number">0</span> <span class="built_in">rgba</span>(220, 255, 220, .36);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@-<span class="keyword">ms</span>-<span class="keyword">keyframes</span> glow &#123;</div><div class="line">    0% &#123;</div><div class="line">        <span class="attribute">border-color</span>: <span class="built_in">rgba</span>(220, 255, 220, .8);</div><div class="line">        <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="built_in">rgba</span>(220, 255, 220, .2), inset <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="built_in">rgba</span>(220, 255, 220, .1)</div><div class="line">        , <span class="number">0</span> <span class="number">1px</span> <span class="number">0</span> <span class="built_in">rgba</span>(220, 255, 220, .36);</div><div class="line">    &#125;</div><div class="line">    100% &#123;</div><div class="line">        <span class="attribute">border-color</span>: <span class="built_in">rgba</span>(220, 255, 220, .8);</div><div class="line">        <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">20px</span> <span class="built_in">rgba</span>(220, 255, 220, .36), inset <span class="number">0</span> <span class="number">0</span> <span class="number">10px</span> <span class="built_in">rgba</span>(220, 255, 220, .34)</div><div class="line">        , <span class="number">0</span> <span class="number">1px</span> <span class="number">0</span> <span class="built_in">rgba</span>(220, 255, 220, .36);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@<span class="keyword">keyframes</span> glow &#123;</div><div class="line">    0% &#123;</div><div class="line">        <span class="attribute">border-color</span>: <span class="built_in">rgba</span>(220, 255, 220, .8);</div><div class="line">        <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="built_in">rgba</span>(220, 255, 220, .2), inset <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="built_in">rgba</span>(220, 255, 220, .1)</div><div class="line">        , <span class="number">0</span> <span class="number">1px</span> <span class="number">0</span> <span class="built_in">rgba</span>(220, 255, 220, .36);</div><div class="line">    &#125;</div><div class="line">    100% &#123;</div><div class="line">        <span class="attribute">border-color</span>: <span class="built_in">rgba</span>(220, 255, 220, .8);</div><div class="line">        <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">20px</span> <span class="built_in">rgba</span>(220, 255, 220, .36), inset <span class="number">0</span> <span class="number">0</span> <span class="number">10px</span> <span class="built_in">rgba</span>(220, 255, 220, .34)</div><div class="line">        , <span class="number">0</span> <span class="number">1px</span> <span class="number">0</span> <span class="built_in">rgba</span>(220, 255, 220, .36);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -744,6 +361,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/08/01/XStream定制解析xml/"
+           data-title="XStream定制解析xml" data-url="http://yealove.github.io/2015/08/01/XStream定制解析xml/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -763,8 +388,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -807,6 +441,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -910,6 +555,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

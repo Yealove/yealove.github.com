@@ -1,0 +1,620 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java,Tool,测试," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="这两天应测试要求写了一个模拟远程接口返回的测试桩。代码在这里：https://github.com/Yealove/MiniFox
+为什么做原来有一个测试桩，功能是：根据访问的URL返回一个固定报文（配置在某文件中）。但当一个URL业务对应多个返回的测试场景时需要手动修改文件，测试觉得太麻烦，浪费很多时间在替换文件上面。故需要一个能按请求报文内容返回不同报文的测试桩。
+做什么与测试讨论后得出需求如">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MiniFox-模拟远程接口返回的测试桩">
+<meta property="og:url" content="http://yealove.github.io/2016/09/28/MiniFox/index.html">
+<meta property="og:site_name" content="10号砖厂">
+<meta property="og:description" content="这两天应测试要求写了一个模拟远程接口返回的测试桩。代码在这里：https://github.com/Yealove/MiniFox
+为什么做原来有一个测试桩，功能是：根据访问的URL返回一个固定报文（配置在某文件中）。但当一个URL业务对应多个返回的测试场景时需要手动修改文件，测试觉得太麻烦，浪费很多时间在替换文件上面。故需要一个能按请求报文内容返回不同报文的测试桩。
+做什么与测试讨论后得出需求如">
+<meta property="og:updated_time" content="2016-09-29T15:40:57.870Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MiniFox-模拟远程接口返回的测试桩">
+<meta name="twitter:description" content="这两天应测试要求写了一个模拟远程接口返回的测试桩。代码在这里：https://github.com/Yealove/MiniFox
+为什么做原来有一个测试桩，功能是：根据访问的URL返回一个固定报文（配置在某文件中）。但当一个URL业务对应多个返回的测试场景时需要手动修改文件，测试觉得太麻烦，浪费很多时间在替换文件上面。故需要一个能按请求报文内容返回不同报文的测试桩。
+做什么与测试讨论后得出需求如">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yealove.github.io/2016/09/28/MiniFox/"/>
+
+  <title> MiniFox-模拟远程接口返回的测试桩 | 10号砖厂 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">10号砖厂</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                MiniFox-模拟远程接口返回的测试桩
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-28T23:36:00+08:00" content="2016-09-28">
+              2016-09-28
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/28/MiniFox/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/28/MiniFox/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><em>这两天应测试要求写了一个模拟远程接口返回的测试桩。</em><br>代码在这里：<a href="https://github.com/Yealove/MiniFox" target="_blank" rel="external">https://github.com/Yealove/MiniFox</a></p>
+<h2 id="为什么做"><a href="#为什么做" class="headerlink" title="为什么做"></a>为什么做</h2><p>原来有一个测试桩，功能是：根据访问的URL返回一个固定报文（配置在某文件中）。<br>但当一个URL业务对应多个返回的测试场景时需要手动修改文件，测试觉得太麻烦，浪费很多时间在替换文件上面。<br>故需要一个能按请求报文内容返回不同报文的测试桩。</p>
+<h2 id="做什么"><a href="#做什么" class="headerlink" title="做什么"></a>做什么</h2><p>与测试讨论后得出需求如下：</p>
+<ol>
+<li>根据请求报文中节点的值返回不同的固定报文</li>
+<li>规则可以配置一个或多个节点</li>
+<li>值可以配置枚举</li>
+</ol>
+<h2 id="怎么做"><a href="#怎么做" class="headerlink" title="怎么做"></a>怎么做</h2><p>基本需求确认后，就开始考虑怎么实现了。</p>
+<h3 id="请求报文获取"><a href="#请求报文获取" class="headerlink" title="请求报文获取"></a>请求报文获取</h3><p>请求是用Socket监听端口，只处理POST请求，当有请求时，通过Socket的输入流获取请求信息。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ServerSocket server = <span class="keyword">new</span> ServerSocket(port);</div><div class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">    Fox fox = <span class="keyword">new</span> Fox(server.accept());</div><div class="line">    fox.start();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>因为是通过流获取信息，所以这里需要我们自己解析HTTP请求信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Http请求格式:</div><div class="line">&lt;request-line&gt;</div><div class="line">&lt;headers&gt;</div><div class="line">&lt;blank line&gt;</div><div class="line">[&lt;request-body&gt;]</div></pre></td></tr></table></figure></p>
+<p>开始还不知道怎么判断请求结束，纠结了一阵，后来才发现POST请求的<code>headers</code>中有<code>Content-Length</code>表示<code>request-body</code>的长度，只要按照这个值获取就行了。这个也就是我需要的请求报文了。</p>
+<h3 id="配置解析与匹配"><a href="#配置解析与匹配" class="headerlink" title="配置解析与匹配"></a>配置解析与匹配</h3><p>之前那个测试桩的配置是用json写的，如果还是用json写现在的复杂配置的话，则看起来和写起来不是特别的方便，所以按照需求自己定制了配置规则如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#url配置</div><div class="line">/busi/sub</div><div class="line">#值的匹配方式 word-整词匹配(默认)|contain-包含匹配(配置值包含实际值)|regex-正则匹配</div><div class="line">_match                   ^contain</div><div class="line">#默认返回文件名</div><div class="line">_default                 ^default.txt</div><div class="line">#规则(节点=值,多个以英文都会分隔)^返回文件名</div><div class="line">node1=123,node2=234      ^file1.txt</div><div class="line">node2=121                ^file2.xml</div><div class="line">#url配置结束标志</div><div class="line">_end</div></pre></td></tr></table></figure></p>
+<p>一行表示一条规则，对应一个固定返回。<br>匹配方式为三种，全匹配、包含和正则。<br>匹配方式中包含和正则都能实现值的枚举。</p>
+<p>规则定义后开始考虑文件解析与存储，最后存储实现为：<br>一个URL对应一个URL配置对象，URL配置对象包含多个规则和对应返回文件名，一个规则对应多个节点和值的对应关系，即一个URL配置按关系解析为三层。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Url配置</div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">UrlConfig</span> </span>&#123;</div><div class="line">	List&lt;Rule&gt; rules = <span class="keyword">new</span> ArrayList&lt;Rule&gt;();</div><div class="line">	String defaultFileName;</div><div class="line">	Match match = Match.WORD;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 规则</div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Rule</span> </span>&#123;</div><div class="line">	List&lt;Relation&gt; relations = <span class="keyword">new</span> ArrayList&lt;Relation&gt;();</div><div class="line">	String fileName;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 对应关系</div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Relation</span> </span>&#123;</div><div class="line">	String key;</div><div class="line">	String value;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>匹配实现为：根据访问URL获取配置对象，循环规则，根据规则中的节点获取请求报文值，如果对应关系值都匹配则返回当前规则文件名，否则继续循环规则。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 根据url和请求内容获取配置的文件名</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span> url</div><div class="line"> * <span class="doctag">@param</span> xml</div><div class="line"> * <span class="doctag">@return</span></div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getResultFileName</span><span class="params">(String url, String xml)</span> </span>&#123;</div><div class="line"></div><div class="line">    UrlConfig urlConfig = urlConfigMap.get(url);</div><div class="line">    <span class="keyword">if</span> (urlConfig == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ConfigCheckedException(<span class="string">"["</span> + url + <span class="string">"]未配置规则，请检查配置！"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//规则校验</span></div><div class="line">    List&lt;Rule&gt; rules = urlConfig.rules;</div><div class="line">    <span class="keyword">for</span> (Rule rule : rules) &#123;</div><div class="line">        <span class="keyword">boolean</span> isThisRule = <span class="keyword">true</span>;</div><div class="line">        <span class="comment">//配置节点不在请求报文中的个数</span></div><div class="line">        <span class="keyword">int</span> noMatchCount = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="comment">//规则校验</span></div><div class="line">        <span class="keyword">for</span> (Relation relation : rule.relations) &#123;</div><div class="line">            <span class="comment">//值不相等则当前规则校验失败，进行下个规则校验</span></div><div class="line">            <span class="keyword">boolean</span> isBreakFor = <span class="keyword">false</span>;</div><div class="line"></div><div class="line">            <span class="keyword">int</span> startIndex = xml.indexOf(<span class="string">"&lt;"</span> + relation.key + <span class="string">"&gt;"</span>) + relation.key.length() + <span class="number">2</span>;</div><div class="line">            <span class="keyword">int</span> endIndex = xml.indexOf(<span class="string">"&lt;/"</span> + relation.key + <span class="string">"&gt;"</span>);</div><div class="line"></div><div class="line">            <span class="comment">//有节点，且结束位置在开始位置之后，则有值</span></div><div class="line">            <span class="keyword">if</span> (startIndex &gt; -<span class="number">1</span> &amp;&amp; endIndex &gt; -<span class="number">1</span> &amp;&amp; endIndex &gt; startIndex) &#123;</div><div class="line">                <span class="comment">//获取请求报文中节点的值</span></div><div class="line">                String value = xml.substring(startIndex, endIndex);</div><div class="line">                </div><div class="line">                <span class="comment">//根据匹配规则进行值的校验</span></div><div class="line">                <span class="keyword">switch</span> (urlConfig.match) &#123;</div><div class="line">                    <span class="keyword">case</span> CONTAIN: &#123;</div><div class="line">                        <span class="keyword">if</span> (!relation.value.contains(value)) &#123;</div><div class="line">                            isThisRule = <span class="keyword">false</span>;</div><div class="line">                            isBreakFor = <span class="keyword">true</span>;</div><div class="line">                        &#125;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="keyword">case</span> REGEX: &#123;</div><div class="line">                        <span class="keyword">if</span> (!value.matches(relation.value)) &#123;</div><div class="line">                            isThisRule = <span class="keyword">false</span>;</div><div class="line">                            isBreakFor = <span class="keyword">true</span>;</div><div class="line">                        &#125;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="keyword">default</span>: &#123;</div><div class="line">                        <span class="keyword">if</span> (!value.equals(relation.value)) &#123;</div><div class="line">                            isThisRule = <span class="keyword">false</span>;</div><div class="line">                            isBreakFor = <span class="keyword">true</span>;</div><div class="line">                        &#125;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="comment">//值不相等则当前规则校验失败，进行下个规则校验</span></div><div class="line">                <span class="keyword">if</span>(isBreakFor) &#123;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="comment">//如果没有此节点则计数加1</span></div><div class="line">                noMatchCount++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">//配置节点存在且值匹配，则返回对应的文件名称</span></div><div class="line">        <span class="keyword">if</span> (noMatchCount &lt; rule.relations.size() &amp;&amp; isThisRule) &#123;</div><div class="line">            <span class="keyword">return</span> rule.fileName;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (urlConfig.defaultFileName == <span class="keyword">null</span> || <span class="string">""</span>.equals(urlConfig.defaultFileName.trim())) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ConfigCheckedException(<span class="string">"["</span> + url + <span class="string">"]未配置默认返回"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> urlConfig.defaultFileName;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="固定报文返回"><a href="#固定报文返回" class="headerlink" title="固定报文返回"></a>固定报文返回</h3><p>这个比较容易，就是根据获取到文件名读取文件，将文件内容通过Socket的输出流返回回去。<br>这里需要注意的是，返回也是需要按HTTP规范来返回的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Http响应格式：</div><div class="line">&lt;status-line&gt;</div><div class="line">&lt;headers&gt;</div><div class="line">&lt;blank line&gt;</div><div class="line">[&lt;response-body&gt;]</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+            <a href="/tags/Tool/" rel="tag">#Tool</a>
+          
+            <a href="/tags/测试/" rel="tag">#测试</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/20/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/28/MiniFox/"
+           data-title="MiniFox-模拟远程接口返回的测试桩" data-url="http://yealove.github.io/2016/09/28/MiniFox/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Yealove" />
+          <p class="site-author-name" itemprop="name">Yealove</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么做"><span class="nav-number">1.</span> <span class="nav-text">为什么做</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#做什么"><span class="nav-number">2.</span> <span class="nav-text">做什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么做"><span class="nav-number">3.</span> <span class="nav-text">怎么做</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请求报文获取"><span class="nav-number">3.1.</span> <span class="nav-text">请求报文获取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置解析与匹配"><span class="nav-number">3.2.</span> <span class="nav-text">配置解析与匹配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#固定报文返回"><span class="nav-number">3.3.</span> <span class="nav-text">固定报文返回</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yealove</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"Yealove"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
